@@ -1,4 +1,4 @@
-FROM stackbrew/ubuntu:saucy
+FROM ubuntu:14.04
 MAINTAINER Vincent Voyer <vincent@zeroload.net>
 RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common wget
@@ -19,5 +19,6 @@ RUN mkdir -p /home/chromeuser/chrome
 RUN chown chromeuser /home/chromeuser/chrome
 RUN chgrp chromeuser /home/chromeuser/chrome
 ADD ./scripts/ /home/root/scripts
+RUN apt-get install -y -q xterm openbox
 EXPOSE 4444 5999
 ENTRYPOINT ["sh", "/home/root/scripts/start.sh"]
